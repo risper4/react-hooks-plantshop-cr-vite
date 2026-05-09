@@ -1,6 +1,22 @@
-import React from "react";
+import {useState} from "react";
 
-function NewPlantForm() {
+function NewPlantForm({addToPage}) {
+  const [name, setName] = useState('')
+  const [image , setImage] = useState('')
+  const [price, setPrice] = useState('')
+
+  function handleSubmit (event) {
+    event.preventDefault()
+
+    const newItem = {
+      name : name,
+      image : image,
+      price : parseFloat(price)
+    }
+  }
+
+
+  
   return (
     <div className="new-plant-form">
       <h2>New Plant</h2>
