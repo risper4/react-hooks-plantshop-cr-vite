@@ -11,9 +11,9 @@ function PlantPage() {
 
   const [search, setSearch] = useState(null)
 
-  const filteredPlants = plants.filter((plant) => {
-    plant.name.toLowerCase().includes(search.toLowerCase())
-  })
+  // const filteredPlants = plants.filter((plant) => {
+  //   plant.name.toLowerCase().includes(search.toLowerCase())
+  // })
 
   function addToPage(newItem) {
     setPlants([...prev, newItem])
