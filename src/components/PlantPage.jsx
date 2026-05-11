@@ -9,18 +9,20 @@ import Search from "./Search";
 
 function PlantPage() {
 
-  const [search, setSearch] = useState(null)
+  const [search, setSearch] = useState('')
 
-  // const filteredPlants = plants.filter((plant) => {
-  //   plant.name.toLowerCase().includes(search.toLowerCase())
-  // })
-
-  function addToPage(newItem) {
-    setPlants([...prev, newItem])
-  }
+ 
+  // function addToPage(newItem) {
+  //   setPlants((prev) => ([...prev, newItem]))
+  // }
 
   const [plants, setPlants] = useState([])
-  // const [loading, setLoading] = useState(null)
+  
+
+   let filteredPlants = plants.filter((plant) => {
+    return plant.name.toLowerCase().includes(search.toLowerCase())
+  })
+
   useEffect(() => {
      fetch('http://localhost:6001/plants')
      .then((response) => {
@@ -40,9 +42,9 @@ function PlantPage() {
 
   return (
     <main>
-      <NewPlantForm addToPage = {addToPage}/>
+      <NewPlantForm plants = {plants} setPlants = {setPlants}/>
       <Search search = {search} setSearch = {setSearch}/>
-      <PlantList plants = {plants}/>
+      <PlantList plants = {filteredPlants} />
     </main>
   );
 }
